@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { useCallback } from "react";
 
-const url = "https://restcountries.com/v3/";
+const url = "https://restcountries.com/v2/";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
@@ -18,35 +18,41 @@ const AppProvider = ({ children }) => {
       try {
         const response = await fetch(`${url}${countrySearch}`);
         const data = await response.json();
+        const sorted_data = data.sort((a, b) => {
+          return a.name < b.name ? -1 : 1;
+        });
         const countriesByRegion =
           region === "Africa"
-            ? data.filter((item) => item.region === "Africa")
+            ? sorted_data.filter((item) => item.continent === "Africa")
             : region === "Americas"
-            ? data.filter((item) => item.region === "Americas")
+            ? sorted_data.filter((item) => item.continent === "Americas")
             : region === "Asia"
-            ? data.filter((item) => item.region === "Asia")
+            ? sorted_data.filter((item) => item.continent === "Asia")
             : region === "Europe"
-            ? data.filter((item) => item.region === "Europe")
+            ? sorted_data.filter((item) => item.continent === "Europe")
             : region === "Oceania"
-            ? data.filter((item) => item.region === "Oceania")
-            : region === "Polar" || region === ""
-            ? data.filter(
-                (item) => item.region === "Polar" || item.region === ""
+            ? sorted_data.filter((item) => item.continent === "Oceania")
+            : region === "Other"
+            ? sorted_data.filter(
+                (item) =>
+                  item.continent === "Antarctic" ||
+                  item.continent === "Antarctic Ocean" ||
+                  item.continent === "Polar"
               )
-            : data;
+            : sorted_data;
         if (countriesByRegion) {
           // Iterate over array of fetched countries...
           const fetchedCountries = countriesByRegion.map((country) => {
             // Destructure all relevant property values out of each country object...
-            const { cca3, flags, name, capital = ["N/A"] } = country;
-            const main_capital = capital[0];
-            const main_flag = flags[0];
+            const { alpha3Code, flags, name, capital, population } = country;
+            const flag_src = flags[0];
             // Create a new object with simplified property names...
             return {
-              id: cca3,
-              image: main_flag,
-              name: name.common,
-              capital: main_capital,
+              id: alpha3Code,
+              image: flag_src,
+              name,
+              capital,
+              population,
             };
           });
           // Update state value with fetched country data...

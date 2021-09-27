@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Country = ({ image, name, id, capital }) => {
+const Country = ({ image, name, id, capital, population }) => {
   return (
     <article className='country'>
       <div className='img-container'>
@@ -15,10 +15,10 @@ const Country = ({ image, name, id, capital }) => {
           <p>
             <span>Capital:</span> {capital}
           </p>
-          {/* <p>
+          <p>
             <span>Population:</span>{" "}
-            {pop.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-          </p> */}
+            {population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </p>
         </div>
         <Link to={`/country/${id}`} className='btn btn-primary'>
           more info

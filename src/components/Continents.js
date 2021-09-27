@@ -10,48 +10,48 @@ const Continents = () => {
           className='filter-btn btn-all'
           onClick={() => fetchCountries("all")}
         >
-          All
-        </button>
-      </div>
+          All{" "}
+        </button>{" "}
+      </div>{" "}
       <div className='btn-container-wrapper'>
         <div className='btn-container'>
           <button
             className='filter-btn'
             onClick={() => fetchCountries("Africa")}
           >
-            Africa
-          </button>
+            Africa{" "}
+          </button>{" "}
           <button
             className='filter-btn'
             onClick={() => fetchCountries("Americas")}
           >
-            Americas
-          </button>
+            Americas{" "}
+          </button>{" "}
           <button className='filter-btn' onClick={() => fetchCountries("Asia")}>
-            Asia
-          </button>
-        </div>
+            Asia{" "}
+          </button>{" "}
+        </div>{" "}
         <div className='btn-container'>
           <button
             className='filter-btn'
             onClick={() => fetchCountries("Europe")}
           >
-            Europe
-          </button>
+            Europe{" "}
+          </button>{" "}
           <button
             className='filter-btn'
             onClick={() => fetchCountries("Oceania")}
           >
-            Oceania
-          </button>
+            Oceania{" "}
+          </button>{" "}
           <button
             className='filter-btn'
-            onClick={() => fetchCountries("Polar")}
+            onClick={() => fetchCountries("Other")}
           >
-            Other
-          </button>
-        </div>
-      </div>
+            Other{" "}
+          </button>{" "}
+        </div>{" "}
+      </div>{" "}
     </>
   );
 };

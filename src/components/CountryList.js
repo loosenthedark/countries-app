@@ -29,10 +29,11 @@ const CountryList = () => {
   return (
     <section className='section'>
       <div className='countries-center'>
+        {" "}
         {countries.map((country) => {
           return <Country key={country.id} {...country} />;
-        })}
-      </div>
+        })}{" "}
+      </div>{" "}
     </section>
   );
 };
