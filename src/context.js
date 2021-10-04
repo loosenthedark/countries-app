@@ -44,12 +44,11 @@ const AppProvider = ({ children }) => {
           // Iterate over array of fetched countries...
           const fetchedCountries = countriesByRegion.map((country) => {
             // Destructure all relevant property values out of each country object...
-            const { alpha3Code, flags, name, capital, population } = country;
-            const flag_src = flags[0];
+            const { alpha3Code, flag, name, capital, population } = country;
             // Create a new object with simplified property names...
             return {
               id: alpha3Code,
-              image: flag_src,
+              flag,
               name,
               capital,
               population,
