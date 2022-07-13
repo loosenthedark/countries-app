@@ -83,7 +83,7 @@
   - [React Icons](https://react-icons.github.io/react-icons/)
 - [`npm`](https://github.com/npm/cli)
 - [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-- [REST Countries API](https://restcountries.eu/#api-endpoints)
+- [REST Countries API](https://restcountries.com/#api-endpoints-v2-all)
 - [Git:](https://git-scm.com/) (version control)
 - [GitHub:](https://github.com/) (remote code storage)
 - [Google Fonts](https://fonts.google.com/)
