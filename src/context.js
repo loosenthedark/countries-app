@@ -1,13 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useCallback } from "react";
+import React, { useState, useContext, useEffect } from 'react';
+import { useCallback } from 'react';
 
-const url = "https://restcountries.com/v2/";
+const url = 'https://restcountries.com/v2/';
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   // set up some basic state values...
   const [loading, setLoading] = useState(true);
-  const [countrySearch, setCountrySearch] = useState("all");
+  const [countrySearch, setCountrySearch] = useState('all');
   const [countries, setCountries] = useState([]);
 
   // set up fetch
@@ -22,34 +22,33 @@ const AppProvider = ({ children }) => {
           return a.name < b.name ? -1 : 1;
         });
         const countriesByRegion =
-          region === "Africa"
-            ? sorted_data.filter((item) => item.continent === "Africa")
-            : region === "Americas"
-            ? sorted_data.filter((item) => item.continent === "Americas")
-            : region === "Asia"
-            ? sorted_data.filter((item) => item.continent === "Asia")
-            : region === "Europe"
-            ? sorted_data.filter((item) => item.continent === "Europe")
-            : region === "Oceania"
-            ? sorted_data.filter((item) => item.continent === "Oceania")
-            : region === "Other"
+          region === 'Africa'
+            ? sorted_data.filter((item) => item.region === 'Africa')
+            : region === 'Americas'
+            ? sorted_data.filter((item) => item.region === 'Americas')
+            : region === 'Asia'
+            ? sorted_data.filter((item) => item.region === 'Asia')
+            : region === 'Europe'
+            ? sorted_data.filter((item) => item.region === 'Europe')
+            : region === 'Oceania'
+            ? sorted_data.filter((item) => item.region === 'Oceania')
+            : region === 'Other'
             ? sorted_data.filter(
                 (item) =>
-                  item.continent === "Antarctic" ||
-                  item.continent === "Antarctic Ocean" ||
-                  item.continent === "Polar"
+                  item.region === 'Antarctic' ||
+                  item.region === 'Antarctic Ocean' ||
+                  item.region === 'Polar'
               )
             : sorted_data;
         if (countriesByRegion) {
           // Iterate over array of fetched countries...
           const fetchedCountries = countriesByRegion.map((country) => {
             // Destructure all relevant property values out of each country object...
-            const { alpha3Code, flags, name, capital, population } = country;
-            const flag_src = flags[0];
+            const { alpha3Code, flag, name, capital, population } = country;
             // Create a new object with simplified property names...
             return {
               id: alpha3Code,
-              image: flag_src,
+              flag,
               name,
               capital,
               population,
@@ -80,8 +79,8 @@ const AppProvider = ({ children }) => {
     <AppContext.Provider
       value={{ loading, setCountrySearch, countries, fetchCountries }}
     >
-      {" "}
-      {children}{" "}
+      {' '}
+      {children}{' '}
     </AppContext.Provider>
   );
 };

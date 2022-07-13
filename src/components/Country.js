@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Country = ({ image, name, id, capital, population }) => {
+const Country = ({ flag, name, id, capital, population }) => {
   return (
     <article className='country'>
       <div className='img-container'>
         <Link to={`/country/${id}`}>
-          <img src={image} alt={name} className='flag-more-info' />
+          <img src={flag} alt={name} className='flag-more-info' />
         </Link>
       </div>
       <div className='country-footer'>

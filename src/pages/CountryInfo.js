@@ -31,14 +31,13 @@ const CountryInfo = () => {
             currencies,
             demonym,
             languages,
-            flags,
+            flag,
             name,
             nativeName,
             population,
             region: location,
             topLevelDomain: domain,
           } = data;
-          const main_flag = flags[0];
           // Create new country object with simplified property names...
           const newCountry = {
             area,
@@ -50,7 +49,7 @@ const CountryInfo = () => {
             currencies,
             demonym,
             languages,
-            flag: main_flag,
+            flag,
             name,
             nativeName,
             population,
